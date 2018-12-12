@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <a href = "{% url 'new_article' %}"><button type="submit" class="btn btn-secondary">New Article</button></a>
+        </div>
+        <div class="col-md-8">
+            {% for article in articles %}
+                <h5><b>{{article.id}}. {{ article.title}}</b>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="{% url 'view_article' %}?id={{article.id}}">View</a>      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="{% url 'edit_article' %}?id={{article.id}}">Edit</a></h5>  
+                <br>
+            {% endfor %}
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+
+{% endblock %}

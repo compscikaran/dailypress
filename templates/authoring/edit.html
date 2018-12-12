@@ -1,4 +1,3 @@
-
 {% extends 'base.html' %}
 {% block content %}
 <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
@@ -6,17 +5,17 @@
     <div class="container" id="editwindow">
         <div class="row">
         <div class="col-md-12">
-            <form>
+        
+            <form id="writer" method="POST" action="{% url 'edit_article' %}" enctype="multipart/form-data">
+                
                 <label for="title">Title</label>
-                <input type="text" id="title" class="form-control"><br>
-                <label class="btn btn-secondary">Browse Banner
-                <input type="file" id = "banner" accept="image/*" hidden>
-                    </label>  
+                <input type="text" name="title" class="form-control" id="title" value="{{article.title}}"><br> 
+                <div id="toolbar" class="article"></div>
+                <div id="editor" class="article">{{ article.content | safe }}</div>
+                <br>
+                <input type="hidden" name="fulltext" id="fulltext"/>
+                <button onclick="updateFullText()" class="btn btn-secondary"> Apply changes </button><br><br>
             </form>
-            <div id="toolbar" class="article"></div>
-            <div id="editor" class="article"></div>
-            <br>
-            <button type="submit" id="saveData" class="btn btn-secondary">Save Article</button>
         </div>
         <div class="col-md-4">
             
@@ -45,12 +44,11 @@
             },
             theme: 'snow'
         });
-
-        // Retrieving quill data and submitting form
-        $('#saveData').click(function () {
-            var articleHTML = quill.root.innerHTML;
-            console.log(articleHTML);
-            
-        });
+    </script>
+    <script>
+    function updateFullText() {
+    
+        document.getElementById('fulltext').value = quill.root.innerHTML;
+    }
     </script>
 {% endblock %}
