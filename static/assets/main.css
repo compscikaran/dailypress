@@ -1,0 +1,48 @@
+@font-face {
+    font-family: 'Masthead';
+    src: url('CuxhavenTimes.ttf')
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Masthead', sans-serif;
+    font-style:normal;
+    font-weight: 1200;
+}
+h3 {
+    font-family: neue-haas-grotesk-display, sans-serif;
+    font-style:normal;
+    font-weight: 1200;
+}
+h5 {
+    font-family: neue-haas-grotesk-display, sans-serif;
+    font-style:normal;
+    font-weight: 1200;
+}
+hr.seperator {
+    height:2px;
+    border: none;
+    background-color:#333;
+}
+
+.component {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    
+}
+
+.article {
+    font-family: neue-haas-grotesk-display, sans-serif;
+}
+
+.title {
+    text-align: center;
+}
+
+.byline {
+    text-align: center;
+}
+
+.tag {
+    padding: 5px;
+}
