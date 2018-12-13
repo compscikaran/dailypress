@@ -36,11 +36,11 @@
             <h5 style="text-align:center">Software Design</h5>
         </div>
         <div class="col-md-2 tag">
-            <h5 style="text-align:center">Java</h5>
+            
         </div>
        <div class="col-md-4 tag">
-            <form class="form-inline float-center">
-                <input type="text" class="form-control" placeholder="Search"> &nbsp;&nbsp;
+            <form class="form-inline float-center" method="GET" action={% url 'search_article' %}>
+                <input type="text" class="form-control" placeholder="Search" name='query'> &nbsp;&nbsp;
                 <input type="submit" value="Go" class="btn btn-secondary glyphicon glyphicon-search">
             </form>
         </div>

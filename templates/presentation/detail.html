@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container" id="article">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 style="text-align: center">{{ article.title }}</h1><br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+            <p>Published on : {{ article.pub_date }}</p>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                    <img src="{{ article.header.url }}" class="img-fluid"><br><br>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+            <div class="article"><p>{{ article.content | safe }}</p></div></div>
+            <div class="col-md-1"></div>
+        </div>
+</div>
+
+{% endblock %}

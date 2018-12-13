@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container" id="search">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 style="text-align:center">Showing results for : {{ query }}</h3><br>
+            </div>
+        </div>
+        {% for article in articles %}
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-5 component">
+                <img src="{{ article.header.url }}" class="img-fluid float-left">
+            </div>
+            <div class="col-md-5 component">
+                <h3 class="title">{{ article.title }}</h3>
+                
+                <p class="article">
+                    Lorem ipsum etiam imperdiet mi praesent ipsum ad blandit viverra, consequat orci venenatis
+                    dapibus posuere mollis pellentesque quisque venenatis feugiat, mollis pharetra....<br>
+                    <a href="">Read Full Story</a><br>
+                    <small class="text-muted">Published : {{ article.pub_date }}</small>
+                </p>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <div class="row"><div class="col-md-10"><hr></div></div>
+        {% endfor %}
+    </div>
+{% endblock content %}

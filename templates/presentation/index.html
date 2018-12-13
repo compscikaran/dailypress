@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container" id="featurestory">
+    <div id="featuresyory">
+    <div class="row">
+        <div class="col-md-6 component">
+            <img src="{{ featurestory.header.url }}" class="img-fluid float-left">
+        </div>
+    
+        <div class="col-md-6 component">
+            <h3 class="title">{{ featurestory.title }}</h3>
+            <p class="article">
+                Lorem ipsum etiam imperdiet mi praesent ipsum ad blandit viverra, consequat orci venenatis
+                dapibus posuere mollis pellentesque quisque venenatis feugiat, mollis pharetra interdum 
+                proin porttitor est fringilla suscipit leo cras sed aliquam cursus laoreet ornare 
+                vulputate taciti ante congue dolor aptent vivam...<br>
+                <a href="{% url 'view_article'%}?id={{featurestory.id}}">Read Full Story</a><br>
+                <small class="text-muted">Published : {{ featurestory.pub_date }}</small>
+            </p>
+        </div>
+        </div>
+    </div>
+    </div>
+    <div  class="container" id="coverstory">
+    <div class="row">
+        {% for article in articles %}
+        <div class="col-md-4 component">
+            <hr>
+            <img src="{{ article.header.url }}" class="img-fluid float-center"><br><br>
+            <h3 class="title">{{ article.title }}</h3>
+            <p class="article">
+                Lorem ipsum etiam imperdiet mi praesent ipsum ad blandit viverra, consequat orci venenatis
+                dapibus posuere mollis pellentesque quisque venenatis feugiat, mollis pharetra interdum 
+                proin porttitor est fringilla suscipit leo cras sed aliquam cursus laoreet ornare 
+                vulputate taciti ante congue dolor aptent vivam...<br>
+                <a href="{% url 'view_article' %}?id={{article.id}}">Read Full Story</a><br>
+                <small class="text-muted">Published : {{ article.pub_date }}</small>
+            </p>
+            <hr>
+        </div>
+        
+    {% endfor %}
+    </div>
+    </div>   
+    <div class="container" id="featurebanner">
+        <div class="row">
+            <div class="col-md-12">
+                <img src="{% static 'assets/banner.png' %}" class="img-fluid">
+            </div>    
+        </div>
+        </div>   
+{% endblock %}

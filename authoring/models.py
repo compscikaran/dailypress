@@ -6,3 +6,6 @@ class Article(models.Model):
     content = models.TextField()
     header = models.ImageField(upload_to='images/')
     pub_date = models.DateTimeField()
+
+    class Meta:
+        get_latest_by = 'pub_date'
