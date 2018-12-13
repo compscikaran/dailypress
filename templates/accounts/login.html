@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container" id="article">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 style="text-align: center">Login</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+            <p><i style="color:red;">{{ error }}</i></p>
+                <form method="POST" action="{% url 'login' %}">
+                {% csrf_token %}
+                    <label for="username">Username</label>
+                    <input type="text" name="username" class="form-control"><br>
+                    <label for="password">Password</label>
+                    <input type="password" name="password" class="form-control"><br>
+                    <input type="submit" value="Login" class="btn btn-secondary">
+                </form><br>
+                <h5>New Account ? <a style="text-decoration: none;" href="{% url 'signup' %}">Signup Here</a></h5>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div><br><br>
+{% endblock %}

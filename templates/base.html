@@ -32,11 +32,16 @@
         <div class="col-md-2 tag">
             <h5 style="text-align:center">Python</h5>
         </div>
-        <div class="col-md-2 tag">
-            <h5 style="text-align:center">Software Design</h5>
-        </div>
-        <div class="col-md-2 tag">
-            
+         <div class="col-md-4 tag">
+            {% if user.is_authenticated %}
+                
+                <form id="logout" method="POST" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <input type="submit" class="btn btn-secondary" value="Logout"/>
+                </form>
+            {% else %}
+                <h5><a href="{% url 'login' %}"><button class="btn btn-secondary">Login</button></a>&nbsp;&nbsp;<a href="{% url 'signup' %}"><button class="btn btn-secondary">Signup</button></a></h5>
+            {% endif %}
         </div>
        <div class="col-md-4 tag">
             <form class="form-inline float-center" method="GET" action={% url 'search_article' %}>
