@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'authoring.apps.AuthoringConfig',
     'presentation.apps.PresentationConfig',
     'accounts.apps.AccountsConfig',
+    'analytics.apps.AnalyticsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

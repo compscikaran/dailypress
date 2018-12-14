@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from authoring.models import Article
+import requests
 # Create your views here.
 def home(request):
     featurestory = Article.objects.latest()
@@ -24,6 +25,7 @@ def view_article(request):
         if request.GET['id']:
             article_id = request.GET['id']
             article = Article.objects.get(id=article_id)
+            requests.get('http://' + request.get_host() + '/analytics/counter/?id=' + str(article_id))
             return render(request, 'presentation/detail.html', { 'article': article})
         else:
             return redirect('home')

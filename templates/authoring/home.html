@@ -8,7 +8,7 @@
         <div class="col-md-8">
             {% for article in articles %}
                 <h5><b>{{article.id}}. {{ article.title}}</b>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="{% url 'view_article' %}?id={{article.id}}">View</a>      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="{% url 'preview_article' %}?id={{article.id}}">View</a>      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="{% url 'edit_article' %}?id={{article.id}}">Edit</a></h5>  
                 <br>
             {% endfor %}
