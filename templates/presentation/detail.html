@@ -26,5 +26,18 @@
             <div class="article"><p>{{ article.content | safe }}</p></div></div>
             <div class="col-md-1"></div>
         </div>
+        <br><br>
+        <div class="row">
+        <div class="col-md-1"></div>
+         <div class="col-md-10">
+         <h5> TAGS : 
+         {% for tag in tags %}
+         <a href="{% url 'tag_search' %}?tag={{ tag }}">{{ tag }}<a>&nbsp;
+         {% endfor %}
+         </h5>
+         </div>
+        <div class="col-md-1"></div>
+        </div>
+
 </div>
 {% endblock %}

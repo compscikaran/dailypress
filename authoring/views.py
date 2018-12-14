@@ -16,6 +16,7 @@ def new_article(request):
             article.title = request.POST['title']
             article.content = request.POST['fulltext']
             article.header = request.FILES['header']
+            article.tags = request.POST['tags'] if 'tags' in request.POST.keys() else None 
             article.pub_date = timezone.datetime.now()
             article.author = request.user
             article.save()

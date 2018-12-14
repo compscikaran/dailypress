@@ -7,6 +7,7 @@ class Article(models.Model):
     header = models.ImageField(upload_to='images/')
     pub_date = models.DateTimeField()
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    tags = models.TextField(null=True)
 
     class Meta:
         get_latest_by = 'pub_date'

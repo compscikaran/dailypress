@@ -25,8 +25,21 @@ def view_article(request):
         if request.GET['id']:
             article_id = request.GET['id']
             article = Article.objects.get(id=article_id)
+            tags = article.tags.split(',') if article.tags is not None else []
             requests.get('http://' + request.get_host() + '/analytics/counter/?id=' + str(article_id))
-            return render(request, 'presentation/detail.html', { 'article': article})
+            return render(request, 'presentation/detail.html', { 'article': article, 'tags': tags})
+        else:
+            return redirect('home')
+    else:
+        return redirect('home')
+
+def tag_search(request):
+    if request.method == 'GET':
+        if request.GET['tag']:
+            tag = request.GET['tag']
+            articles = Article.objects.filter(tags__icontains=tag)
+            return render(request, 'presentation/search.html', 
+            {'query' : tag, 'articles': articles})
         else:
             return redirect('home')
     else:
