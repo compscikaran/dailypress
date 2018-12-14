@@ -1,11 +1,6 @@
-@font-face {
-    font-family: 'Masthead';
-    src: url('CuxhavenTimes.ttf')
-}
-
 h1 {
     text-align: center;
-    font-family: 'Masthead', sans-serif;
+    font-family: Pacifico;
     font-style:normal;
     font-weight: 1200;
 }
