@@ -2,52 +2,54 @@
 {% load static %}
 {% block content %}
     <div class="container" id="featurestory">
-    <div id="featuresyory">
+    <div id="featurestory">
     <div class="row">
         <div class="col-md-6 component">
-            <img src="{{ featurestory.header.url }}" class="img-fluid float-left">
+            <img src="{{ featurestory1.header.url }}" class="img-fluid" />
+            <br><br>
+            <a href="{% url 'view_article' %}?id={{featurestory1.id}}"><h1>{{ featurestory1.title }}</h1></a>
+            <h5>By {{ featurestory1.author.username }} <small class="text-muted">
+            - {{ featurestory1.pub_date }}</small></h5>
         </div>
-    
         <div class="col-md-6 component">
-            <h3 class="title">{{ featurestory.title }}</h3>
-            <p class="article">
-                Lorem ipsum etiam imperdiet mi praesent ipsum ad blandit viverra, consequat orci venenatis
-                dapibus posuere mollis pellentesque quisque venenatis feugiat, mollis pharetra interdum 
-                proin porttitor est fringilla suscipit leo cras sed aliquam cursus laoreet ornare 
-                vulputate taciti ante congue dolor aptent vivam...<br>
-                <a href="{% url 'view_article'%}?id={{featurestory.id}}">Read Full Story</a><br>
-                <small class="text-muted">Published : {{ featurestory.pub_date }}</small>
-            </p>
-        </div>
+            <img src="{{ featurestory2.header.url }}" class="img-fluid" />
+            <br><br>
+            <a href="{% url 'view_article' %}?id={{featurestory2.id}}"><h1>{{ featurestory2.title }}</h1></a>
+            <h5>By {{ featurestory2.author.username }} <small class="text-muted">
+            - {{ featurestory2.pub_date }}</small></h5>
         </div>
     </div>
     </div>
-    <div  class="container" id="coverstory">
     <div class="row">
-        {% for article in articles %}
-        <div class="col-md-4 component">
-            <hr>
-            <img src="{{ article.header.url }}" class="img-fluid float-center"><br><br>
-            <h3 class="title">{{ article.title }}</h3>
-            <p class="article">
-                Lorem ipsum etiam imperdiet mi praesent ipsum ad blandit viverra, consequat orci venenatis
-                dapibus posuere mollis pellentesque quisque venenatis feugiat, mollis pharetra interdum 
-                proin porttitor est fringilla suscipit leo cras sed aliquam cursus laoreet ornare 
-                vulputate taciti ante congue dolor aptent vivam...<br>
-                <a href="{% url 'view_article' %}?id={{article.id}}">Read Full Story</a><br>
-                <small class="text-muted">Published : {{ article.pub_date }}</small>
-            </p>
+        <div class="col-lg-12">
             <hr>
         </div>
-        
-    {% endfor %}
     </div>
-    </div>   
+    </div>
     <div class="container" id="featurebanner">
         <div class="row">
             <div class="col-md-12">
                 <img src="{% static 'assets/banner.png' %}" class="img-fluid">
             </div>    
         </div>
-        </div>   
+        <div class="row">
+        <div class="col-lg-12">
+            <hr>
+        </div>
+    </div>
+    </div> 
+    <div  class="container" id="coverstory">
+    <div class="row">
+        {% for article in articles %}
+        <div class="col-md-4 component">
+            
+            <img src="{{ article.header.url }}" class="img-fluid float-center"><br><br>
+            <a href="{% url 'view_article' %}?id={{article.id}}"><h3 class="title">{{ article.title }}</h3></a><br>
+            <h5>By {{ article.author.username }} <small class="text-muted">
+            - {{ article.pub_date }}</small></h5>    
+        </div>
+        
+    {% endfor %}
+    </div>
+    </div>     
 {% endblock %}

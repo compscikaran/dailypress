@@ -12,15 +12,10 @@
             <div class="col-md-5 component">
                 <img src="{{ article.header.url }}" class="img-fluid float-left">
             </div>
-            <div class="col-md-5 component">
-                <h3 class="title">{{ article.title }}</h3>
-                
-                <p class="article">
-                    Lorem ipsum etiam imperdiet mi praesent ipsum ad blandit viverra, consequat orci venenatis
-                    dapibus posuere mollis pellentesque quisque venenatis feugiat, mollis pharetra....<br>
-                    <a href="">Read Full Story</a><br>
-                    <small class="text-muted">Published : {{ article.pub_date }}</small>
-                </p>
+            <div class="col-md-5 component">   
+            <a href="{% url 'view_article' %}?id={{article.id}}"><h3 class="title">{{ article.title }}</h3></a><br>
+            <h5>By {{ article.author.username }} <small class="text-muted">
+            - {{ article.pub_date }}</small></h5>
             </div>
             <div class="col-md-1"></div>
         </div>

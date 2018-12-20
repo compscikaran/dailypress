@@ -1,15 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
+<br><br>
 <div class="container" id="article">
         <div class="row">
-            <div class="col-md-12">
-                <h1 style="text-align: center">{{ article.title }}</h1><br>
+        <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <h1>{{ article.title }}</h1><br>
             </div>
+        <div class="col-md-1"></div>
         </div>
         <div class="row">
             <div class="col-md-1"></div>
             <div class="col-md-10">
-            <p>Published on : {{ article.pub_date }}</p>
+            <p>Published on : {{ article.pub_date }}</p><br>
+            <div class="icon-bar">
+                    <a href="#" class="icon-box"><i class="fa fa-facebook"></i></a> 
+                    <a href="#" class="icon-box"><i class="fa fa-twitter"></i></a> 
+                    <a href="#" class="icon-box"><i class="fa fa-google"></i></a> 
+                    <a href="#" class="icon-box"><i class="fa fa-linkedin"></i></a>
+            </div><br>
             </div>
             <div class="col-md-1"></div>
         </div>

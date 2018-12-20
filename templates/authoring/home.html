@@ -4,6 +4,11 @@
     <div class="row">
         <div class="col-md-2">
             <a href = "{% url 'new_article' %}"><button type="submit" class="btn btn-secondary">New Article</button></a>
+            <br>
+            <form id="logout" method="POST" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <input type="submit" class="btn btn-secondary" value="Logout"/>
+                </form>
         </div>
         <div class="col-md-8">
             {% for article in articles %}

@@ -1,8 +1,8 @@
+
 h1 {
-    text-align: center;
-    font-family: Pacifico;
+    font-family: neue-haas-grotesk-display, sans-serif;
     font-style:normal;
-    font-weight: 1200;
+    font-weight: normal;
 }
 h3 {
     font-family: neue-haas-grotesk-display, sans-serif;
@@ -13,11 +13,6 @@ h5 {
     font-family: neue-haas-grotesk-display, sans-serif;
     font-style:normal;
     font-weight: 1200;
-}
-hr.seperator {
-    height:2px;
-    border: none;
-    background-color:#333;
 }
 
 .component {
@@ -31,7 +26,7 @@ hr.seperator {
 }
 
 .title {
-    text-align: center;
+    text-align: left;
 }
 
 .byline {
@@ -40,40 +35,42 @@ hr.seperator {
 
 .tag {
     padding: 5px;
+    color:grey;
 }
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
-  
-  
-.modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
+
+a {
+    text-decoration: none !important;
+    color: black;
+}
+a:hover {
+    color:black;
+}
+a:visited {
+    color: black;
+}
+
+/* Stick Icon Bar */
+
+
+.icon-bar a {
+    display: inline;
+    text-align: center;
+    transition: all 0.3s ease;
+    color: white;
+    font-size: 25px;
+}
+
+.icon-bar a:hover {
+    background-color: #000;
+}
+
+.icon-box {
+    background-color: grey;
+    color:white;
+    margin-bottom: 5px;
+    padding-left:20px;
+    padding-right: 20px;
+    padding-top:10px;
+    padding-bottom:10px;
 }
   
-.close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-  
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
