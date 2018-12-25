@@ -65,7 +65,7 @@ a:visited {
 }
 
 .icon-box {
-    background-color: grey;
+    background-color: #808080;
     color:white;
     margin-bottom: 5px;
     padding-left:20px;
@@ -74,3 +74,4 @@ a:visited {
     padding-bottom:10px;
 }
   
+canvas { max-height: 100px; }

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+        <canvas id="myChart" width="10" height="10"></canvas>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+<script>
+var request = new XMLHttpRequest();
+request.open('GET', 'http://localhost:8000/analytics/hits?id=' + {{id}}, true);
+request.send();
+var visits = {};
+request.onreadystatechange=(e)=> {
+    visits = JSON.parse(request.responseText);
+    console.log(visits["labels"]);
+    var ctx = document.getElementById("myChart").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: visits.labels,
+            datasets: [
+                {
+                    label: "Number of visits",
+                    backgroundColor: "#808080" ,
+                    data: visits["values"],
+                }
+            ]
+        },
+        options: {
+            legend: { display: false },
+            title: {
+                 display: true,
+                 text: 'Daily Visits on Article'
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            },
+        }
+    });
+}
+</script>
+{% endblock %}

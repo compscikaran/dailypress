@@ -4,6 +4,7 @@ from authoring.models import Article
 from django.utils import timezone
 from django.http import JsonResponse
 from django.db.models import Count
+import json
 # Create your views here.
 
 def counter(request):
@@ -22,3 +23,23 @@ def hits(request):
     for i in range(0, len(list_hits)):
         list_hits[i]['title'] = list_articles[i].title
     return render(request, 'analytics/hits.html', {'list_hits' : list_hits})
+
+def visit_data(request):
+    article_id = request.GET["id"]
+    article = Article.objects.get(id=article_id)
+    list_hits = list(ArticleHit.objects.filter(article = article).values('timestamp'))
+    dates = [str(item['timestamp'].date()) for item in list_hits]
+    response = {}
+    for date in dates:
+        if date in response.keys():
+            response[date] += 1
+        else:
+            response[date] = 1
+    return_value = {}
+    return_value['labels'] = list(response.keys())
+    return_value['values'] = list(response.values())
+    return JsonResponse(return_value, safe=False)
+
+def graph(request):
+    article_id = request.GET["id"]
+    return render(request, 'analytics/visits.html', {'id': article_id})
