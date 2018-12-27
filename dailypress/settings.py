@@ -120,6 +120,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 
+#load properties from config files
 configurations = yaml.load(open(BASE_DIR + '/config.yml'))
 SITE_TITLE = configurations['title']
 SITE_SUBTITLE = configurations['subtitle']
