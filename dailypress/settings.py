@@ -1,4 +1,4 @@
-
+import yaml
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -54,6 +54,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'dailypress.context_processors.title_subtitle',
             ],
         },
     },
@@ -118,3 +119,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+
+configurations = yaml.load(open(BASE_DIR + '/config.yml'))
+SITE_TITLE = configurations['title']
+SITE_SUBTITLE = configurations['subtitle']
