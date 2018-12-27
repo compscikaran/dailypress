@@ -4,9 +4,9 @@ from authoring.models import Article
 from django.utils import timezone
 from django.http import JsonResponse
 from django.db.models import Count
-import json
+from django.contrib.auth.decorators import login_required
 # Create your views here.
-
+@login_required
 def counter(request):
     article_id = request.GET['id']
     article = Article.objects.get(id=article_id)
@@ -17,6 +17,7 @@ def counter(request):
     response = 'Article ' + str(article.id) + ' Counted'
     return JsonResponse({'msg' : response})
 
+@login_required
 def hits(request):
     list_hits = list(ArticleHit.objects.all().values('article').annotate(total=Count('article')).order_by('article'))
     list_articles = list(Article.objects.all())
@@ -24,6 +25,7 @@ def hits(request):
         list_hits[i]['title'] = list_articles[i].title
     return render(request, 'analytics/hits.html', {'list_hits' : list_hits})
 
+@login_required
 def visit_data(request):
     article_id = request.GET["id"]
     article = Article.objects.get(id=article_id)
@@ -40,6 +42,7 @@ def visit_data(request):
     return_value['values'] = list(response.values())
     return JsonResponse(return_value, safe=False)
 
+@login_required
 def graph(request):
     article_id = request.GET["id"]
     return render(request, 'analytics/visits.html', {'id': article_id})
