@@ -69,7 +69,7 @@ WSGI_APPLICATION = 'dailypress.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'sejournal',
+        'NAME': 'dailypress',
         'USER': 'postgres',
         'PASSWORD': 'karan184',
         'HOST': 'localhost',
