@@ -2,24 +2,45 @@
 {% block content %}
 <div class="container">
     <div class="row">
+        <div class="col-md-2"></div>
         <div class="col-md-2">
             <a href = "{% url 'new_article' %}"><button type="submit" class="btn btn-secondary">New Article</button></a>
-            <br><br><br>
-            <form id="logout" method="POST" action="{% url 'logout' %}">
-                {% csrf_token %}
-                <input type="submit" class="btn btn-secondary" value="Logout"/>
-                </form>
         </div>
-        <div class="col-md-8">
-            {% for article in articles %}
-                <h5><b>{{article.id}}. {{ article.title}}</b>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="{% url 'preview_article' %}?id={{article.id}}">View</a>      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="{% url 'edit_article' %}?id={{article.id}}">Edit</a></h5>  
-                <br>
-            {% endfor %}
+        <div class="col-md-2">
+                <form id="logout" method="POST" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <input type="submit" class="btn btn-secondary" value="Logout"/>
+                        </form>
         </div>
-        <div class="col-md-2"></div>
+        <div class="col-md-6"></div>
     </div>
-</div>
-
+    <br><br>
+    <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-4"> <h2>Article</h2></div>
+            <div class="col-md-4"> <h2>Actions</h2></div>
+            <div class="col-md-2"></div>
+    </div>
+    <br><br>
+        {% for article in articles %}
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-4">    
+                <h5><b> {{ article.title}}</b></h5>
+            </div>
+            <div class="col-md-2">
+                <h5><a href="{% url 'preview_article' %}?id={{article.id}}">
+                    <button type="submit" class="btn btn-secondary">View</button>
+                </a></h5>   
+            </div>
+            <div class="col-md-2">
+                <h5><a href="{% url 'edit_article' %}?id={{article.id}}">
+                    <button type="submit" class="btn btn-secondary">Edit</button>
+                </a></h5>  
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        <br>
+        {% endfor %}    
+    </div>
 {% endblock %}

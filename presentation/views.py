@@ -3,19 +3,10 @@ from authoring.models import Article
 import requests
 # Create your views here.
 def home(request):
-    featurestory1 = Article.objects.latest()
-    featurestory2 = Article.objects.all().order_by('-pub_date')[1]
-    articles = Article.objects.all().order_by('-pub_date')[2:]
-    if featurestory1 is None:
-        return render(request, 'presentation/index.html')
-    elif featurestory2 is None:
-        return render(request, 'presentation/index.html', 
-        { 'featurestory1': featurestory1 })
-    elif articles is None:
-        return render(request, 'presentation/index.html', 
-        { 'featurestory1': featurestory1, 'featurestory2': featurestory2 })
+    featurestory = Article.objects.latest()
+    articles = Article.objects.all()
     return render(request, 'presentation/index.html', 
-    { 'featurestory1' : featurestory1, 'featurestory2': featurestory2, 'articles': articles})
+    { 'featurestory' : featurestory, 'articles': articles})
 
 def search_article(request):
     if request.method == 'GET':
